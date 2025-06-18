@@ -1,3 +1,4 @@
+package homeworks.homework01;
 public enum GameResult {
     STONE(0), SCISSORS(1), PAPER(2);
 

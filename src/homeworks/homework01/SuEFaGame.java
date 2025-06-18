@@ -1,3 +1,4 @@
+package homeworks.homework01;
 
 import java.security.SecureRandom;
 import java.util.Arrays;

@@ -1,3 +1,4 @@
+package homeworks.homework01;
 public class Player {
     String name;
 
