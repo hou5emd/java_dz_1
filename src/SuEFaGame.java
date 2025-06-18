@@ -1,6 +1,8 @@
-// Модно доработать до Player[]
 
+import java.security.SecureRandom;
 import java.util.Arrays;
+
+// Можно доработать до Player[]
 
 public class SuEFaGame {
     Player playerOne;
@@ -11,11 +13,17 @@ public class SuEFaGame {
         this.playerTwo = playerTwo;
     }
 
+    public GameResult getPlayerResult() {
+        SecureRandom rn = new SecureRandom();
+
+        return GameResult.getByValue(rn.nextInt(3));
+    }
+
     public void play() {
         GameResult[][] winnerCombinations = {{GameResult.STONE, GameResult.SCISSORS},
                 {GameResult.PAPER, GameResult.STONE}, {GameResult.SCISSORS, GameResult.PAPER}};
-        GameResult playerOneResult = this.playerOne.playSuEFa();
-        GameResult playerTwoResult = this.playerTwo.playSuEFa();
+        GameResult playerOneResult = this.getPlayerResult();
+        GameResult playerTwoResult = this.getPlayerResult();
 
         // Наверное можно более оптимально
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
@@ -44,5 +52,7 @@ public class SuEFaGame {
 
         }
     }
+
+
 
 }
