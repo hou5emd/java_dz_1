@@ -12,8 +12,8 @@ public class SuEFaGame {
     }
 
     public void play() {
-        GameResult[][] winnerCombinations = { { GameResult.STONE, GameResult.SCISSORS },
-                { GameResult.PAPER, GameResult.STONE }, { GameResult.SCISSORS, GameResult.PAPER } };
+        GameResult[][] winnerCombinations = {{GameResult.STONE, GameResult.SCISSORS},
+                {GameResult.PAPER, GameResult.STONE}, {GameResult.SCISSORS, GameResult.PAPER}};
         GameResult playerOneResult = this.playerOne.playSuEFa();
         GameResult playerTwoResult = this.playerTwo.playSuEFa();
 
@@ -30,12 +30,14 @@ public class SuEFaGame {
         }
         for (GameResult[] winnerCombination : winnerCombinations) {
 
-            if (Arrays.equals(winnerCombination, new GameResult[] { playerOneResult, playerTwoResult })) {
+            if (Arrays.equals(winnerCombination,
+                    new GameResult[] {playerOneResult, playerTwoResult})) {
                 System.out.println("Выиграл: " + playerOne.name);
                 break;
             }
 
-            if (Arrays.equals(winnerCombination, new GameResult[] { playerTwoResult, playerOneResult })) {
+            if (Arrays.equals(winnerCombination,
+                    new GameResult[] {playerTwoResult, playerOneResult})) {
                 System.out.println("Выиграл: " + playerTwo.name);
                 break;
             }

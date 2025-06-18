@@ -1,7 +1,5 @@
 public enum GameResult {
-    STONE(0),
-    SCISSORS(1),
-    PAPER(2);
+    STONE(0), SCISSORS(1), PAPER(2);
 
     private final Number value;
 
