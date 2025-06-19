@@ -16,7 +16,6 @@ public class SuEFaGame {
 
     public GameResult getPlayerResult() {
         SecureRandom rn = new SecureRandom();
-
         return GameResult.getByValue(rn.nextInt(3));
     }
 
@@ -37,21 +36,21 @@ public class SuEFaGame {
             System.out.println("Ничья");
             return;
         }
+        // Не нашёл union с простой реализацией, кажется что так делать нельзя :)
+        Player winner = null;
         for (GameResult[] winnerCombination : winnerCombinations) {
 
             if (Arrays.equals(winnerCombination,
                     new GameResult[] {playerOneResult, playerTwoResult})) {
-                System.out.println("Выиграл: " + playerOne.name);
+                winner = playerOne;
                 break;
             }
-
-            if (Arrays.equals(winnerCombination,
-                    new GameResult[] {playerTwoResult, playerOneResult})) {
-                System.out.println("Выиграл: " + playerTwo.name);
-                break;
-            }
-
         }
+        if (winner == null) {
+            winner = playerTwo;
+        }
+        System.out.println("Выиграл: " + winner.name);
+
     }
 
 
