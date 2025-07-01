@@ -4,32 +4,31 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 
 // Можно доработать до Player[]
-
 public class SuEFaGame {
-    User playerOne;
-    User playerTwo;
+    User userOne;
+    User userTwo;
 
     public SuEFaGame(User playerOne, User playerTwo) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
+        this.userOne = playerOne;
+        this.userTwo = playerTwo;
     }
 
-    public GameResult getPlayerResult() {
+    public PossibleValue getPlayerResult() {
         SecureRandom rn = new SecureRandom();
-        return GameResult.getByValue(rn.nextInt(3));
+        return PossibleValue.getByValue(rn.nextInt(3));
     }
 
     public void play() {
-        GameResult[][] winnerCombinations = {{GameResult.STONE, GameResult.SCISSORS},
-                {GameResult.PAPER, GameResult.STONE}, {GameResult.SCISSORS, GameResult.PAPER}};
-        GameResult playerOneResult = this.getPlayerResult();
-        GameResult playerTwoResult = this.getPlayerResult();
+        PossibleValue[][] winnerCombinations = {{PossibleValue.STONE, PossibleValue.SCISSORS},
+                {PossibleValue.PAPER, PossibleValue.STONE}, {PossibleValue.SCISSORS, PossibleValue.PAPER}};
+        PossibleValue playerOneResult = this.getPlayerResult();
+        PossibleValue playerTwoResult = this.getPlayerResult();
 
         // Наверное можно более оптимально
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("Результаты:");
-        System.out.println(playerOne.name + ": " + playerOneResult + ";");
-        System.out.println(playerTwo.name + ": " + playerTwoResult + ";");
+        System.out.println(userOne.name + ": " + playerOneResult + ";");
+        System.out.println(userTwo.name + ": " + playerTwoResult + ";");
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
 
         if (playerOneResult.equals(playerTwoResult)) {
@@ -37,16 +36,16 @@ public class SuEFaGame {
             return;
         }
         User winner = null;
-        for (GameResult[] winnerCombination : winnerCombinations) {
+        for (PossibleValue[] winnerCombination : winnerCombinations) {
 
             if (Arrays.equals(winnerCombination,
-                    new GameResult[] {playerOneResult, playerTwoResult})) {
-                winner = playerOne;
+                    new PossibleValue[] {playerOneResult, playerTwoResult})) {
+                winner = userOne;
                 break;
             }
         }
         if (winner == null) {
-            winner = playerTwo;
+            winner = userTwo;
         }
         System.out.println("Выиграл: " + winner.name);
 

@@ -1,15 +1,15 @@
 package homeworks.homework01;
-public enum GameResult {
+public enum PossibleValue {
     STONE(0), SCISSORS(1), PAPER(2);
 
     private final Number value;
 
-    GameResult(Number value) {
+    PossibleValue(Number value) {
         this.value = value;
     }
 
-    public static GameResult getByValue(Number value) {
-        for (GameResult result : GameResult.values()) {
+    public static PossibleValue getByValue(Number value) {
+        for (PossibleValue result : PossibleValue.values()) {
             if (result.value.equals(value)) {
                 return result;
             }
