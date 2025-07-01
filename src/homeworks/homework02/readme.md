@@ -1,6 +1,6 @@
 ##DZ02
 
-###
+### FahrenheitToCelsius
 
 ```
  andrey@ZenBookINP  ~/git/java_first/dz_1/dz-one   main   /usr/bin/env /usr/lib/jvm/java-21-
@@ -9,7 +9,6 @@ z_1/dz-one/bin homeworks.homework02.FahrenheitToCelsius
 Введите степень в градусах Фаренгейта: 212
 212,0 градусов по Фаренгейту равна 100,0 по Цельсию
 ```
-
 
 
 ### ArithmeticOperations
@@ -42,6 +41,7 @@ ionMessages -cp /home/andrey/git/java_first/dz_1/dz-one/bin homeworks.homework02
 Сколько раз вывести строку? 6
 После повторения 6 раз: 123--123--123--123--123--123--
 ```
+
 
 ### GridPrinter
 
