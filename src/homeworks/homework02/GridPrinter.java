@@ -11,16 +11,12 @@ public class GridPrinter {
             String element = scanner.next();
 
             System.out.println("Сетка по запросу " + n + " на " + n);
-            String outpuString = "";
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
-                    outpuString += element + " ";
+                    System.out.print(element + " ");
                 }
-                if (i < n - 1) {
-                    outpuString += "\n";
-                }
+                System.out.println();
             }
-            System.out.println(outpuString);
         }
     }
 }
