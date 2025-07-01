@@ -6,10 +6,10 @@ import java.util.Arrays;
 // Можно доработать до Player[]
 
 public class SuEFaGame {
-    Player playerOne;
-    Player playerTwo;
+    User playerOne;
+    User playerTwo;
 
-    public SuEFaGame(Player playerOne, Player playerTwo) {
+    public SuEFaGame(User playerOne, User playerTwo) {
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
     }
@@ -36,8 +36,7 @@ public class SuEFaGame {
             System.out.println("Ничья");
             return;
         }
-        // Не нашёл union с простой реализацией, кажется что так делать нельзя :)
-        Player winner = null;
+        User winner = null;
         for (GameResult[] winnerCombination : winnerCombinations) {
 
             if (Arrays.equals(winnerCombination,
