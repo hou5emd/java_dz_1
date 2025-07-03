@@ -28,13 +28,10 @@ public class Television {
     }
 
     public String getBrand() { return brand; }
-    public void setBrand(String brand) { this.brand = brand; }
 
     public int getInchSize() { return inchSize; }
-    public void setInchSize(int size) { this.inchSize = size; }
 
     public boolean isSmart() { return isSmart; }
-    public void setSmart(boolean smart) { isSmart = smart; }
 
     public int getVolume() { return volume; }
     public void setVolume(int volume) { this.volume = volume; }
