@@ -3,8 +3,7 @@ package homeworks.homework04;
 import java.util.Scanner;
 
 public class LeftKeyboardLetter {
-    // Строка с замкнутой последовательностью клавиш
-    private static final String keys = "qwertyuiopasdfghjklzxcvbnmp";
+    private static final String keys = "qwertyuiopasdfghjklzxcvbnm";
 
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
@@ -14,7 +13,6 @@ public class LeftKeyboardLetter {
             if (idx == -1) {
                 System.out.println("Некорректный ввод");
             } else {
-                // Для idx == 0 слева стоит последний символ
                 char left = keys.charAt((idx - 1 + keys.length()) % keys.length());
                 System.out.println(left);
             }
