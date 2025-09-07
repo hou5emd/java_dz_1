@@ -1,4 +1,4 @@
-# Домашнее задание: Инкапсуляция. Модификаторы доступа в Java
+# Домашнее задание 9
 
 ## Вывод из консоли
 
@@ -20,13 +20,124 @@ Lamborghini Aventador (2021): 750 л.с., ускорение 7, подвеска
 3) Lamborghini Aventador (2021): 750 л.с., ускорение 7, подвеска 18, долговечность 80, Звёзды: 5
 ```
 
+## Работа с файлами (input/output)
+
+### input.txt
+```
+# Формат: тип_гонки;длина;маршрут;призовой_фонд;доп_параметр;марка;модель;год;мощность;ускорение;подвеска;долговечность;тип_машины;доп_параметр_машины
+TimeLimitRace;4000;Трасса1;20000;120;BMW;M3;2018;430;9;16;90;Performance;Turbo,Nitro
+CircuitRace;6000;Трасса2;25000;5;Audi;RS7;2021;600;8;18;95;Show;7
+```
+
+### output.txt
+```
+Гонка на время Гонка: Трасса1, Длина: 4000, Призовой фонд: 20000, Участников: 1, Золотое время: 120
+Участник: BMW M3 (2018): 645 л.с., ускорение 9, подвеска 12, долговечность 90, Дополнения: [Turbo, Nitro]
+
+Кольцевая гонка Гонка: Трасса2, Длина: 6000, Призовой фонд: 25000, Участников: 1, Кругов: 5
+Участник: Audi RS7 (2021): 600 л.с., ускорение 8, подвеска 18, долговечность 95, Звёзды: 7
+
+Гараж содержит: 2 автомобилей
+1) BMW M3 (2018): 645 л.с., ускорение 9, подвеска 12, долговечность 90, Дополнения: [Turbo, Nitro]
+2) Audi RS7 (2021): 600 л.с., ускорение 8, подвеска 18, долговечность 95, Звёзды: 7
+```
+
+
 ## Исходный код
 
 ### App.java
 ```java
 package homeworks.homework09;
 
+import java.nio.file.*;
+import java.util.List;
+
 public class App {
+
+    public static void runFileTask() {
+        Path inputPath = Paths.get("src/homeworks/homework09/input.txt");
+        Path outputPath = Paths.get("src/homeworks/homework09/output.txt");
+        StringBuilder result = new StringBuilder();
+        Garage garage = new Garage();
+
+        try {
+            List<String> lines = Files.readAllLines(inputPath);
+            for (String line : lines) {
+                if (line.trim().isEmpty() || line.startsWith("#"))
+                    continue;
+                String[] parts = line.split(";");
+                String raceType = parts[0];
+                int length = Integer.parseInt(parts[1]);
+                String route = parts[2];
+                int prizePool = Integer.parseInt(parts[3]);
+                int raceParam = Integer.parseInt(parts[4]);
+                String brand = parts[5];
+                String model = parts[6];
+                int year = Integer.parseInt(parts[7]);
+                int horsepower = Integer.parseInt(parts[8]);
+                int acceleration = Integer.parseInt(parts[9]);
+                int suspension = Integer.parseInt(parts[10]);
+                int durability = Integer.parseInt(parts[11]);
+                String carType = parts[12];
+                String carParam = parts.length > 13 ? parts[13] : "";
+
+                Car car;
+                if (carType.equalsIgnoreCase("Performance")) {
+                    String[] addOns = carParam.split(",");
+                    car = new PerformanceCar(brand, model, year, horsepower, acceleration,
+                            suspension, durability, addOns);
+                } else if (carType.equalsIgnoreCase("Show")) {
+                    int stars = 0;
+                    try {
+                        stars = Integer.parseInt(carParam);
+                    } catch (Exception e) {
+                    }
+                    car = new ShowCar(brand, model, year, horsepower, acceleration, suspension,
+                            durability, stars);
+                } else {
+                    car = new Car(brand, model, year, horsepower, acceleration, suspension,
+                            durability);
+                }
+                garage.parkCar(car);
+
+                Race race;
+                switch (raceType) {
+                    case "TimeLimitRace":
+                        race = new TimeLimitRace(length, route, prizePool, raceParam);
+                        break;
+                    case "CircuitRace":
+                        race = new CircuitRace(length, route, prizePool, raceParam);
+                        break;
+                    case "CasualRace":
+                        race = new CasualRace(length, route, prizePool);
+                        break;
+                    case "DragRace":
+                        race = new DragRace(length, route, prizePool);
+                        break;
+                    case "DriftRace":
+                        race = new DriftRace(length, route, prizePool);
+                        break;
+                    default:
+                        race = null;
+                }
+                if (race != null) {
+                    race.addParticipant(car);
+                    result.append(race.toString()).append("\n");
+                    result.append("Участник: ").append(car.toString()).append("\n\n");
+                }
+            }
+            result.append(garage.toString());
+        } catch (Exception e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+
+        try {
+            Files.write(outputPath, result.toString().getBytes());
+        } catch (Exception e) {
+            System.out.println("Ошибка записи в файл: " + e.getMessage());
+        }
+    }
+
     public static void main(String[] args) {
         Car car1 = new Car("Toyota", "Corolla", 2020, 120, 10, 15, 100);
         PerformanceCar perfCar = new PerformanceCar("Ferrari", "488", 2022, 670, 8, 20, 90,
@@ -57,6 +168,8 @@ public class App {
 
         garage.modifyCar(0, new Car("Honda", "Civic", 2019, 110, 11, 14, 95));
         System.out.println("После замены автомобиля: " + garage);
+
+        runFileTask();
     }
 }
 ```
@@ -363,6 +476,60 @@ public class Garage {
     @Override
     public int hashCode() {
         return Objects.hash(parkedCars);
+    }
+}
+```
+
+### TimeLimitRace.java
+```java
+package homeworks.homework09;
+
+public class TimeLimitRace extends Race {
+    private int goldTime;
+
+    public TimeLimitRace() {
+        super();
+        this.goldTime = 0;
+    }
+
+    public TimeLimitRace(int length, String route, int prizePool, int goldTime) {
+        super(length, route, prizePool);
+        this.goldTime = goldTime;
+    }
+
+    public int getGoldTime() { return goldTime; }
+    public void setGoldTime(int goldTime) { this.goldTime = goldTime; }
+
+    @Override
+    public String toString() {
+        return "Гонка на время " + super.toString() + ", Золотое время: " + goldTime;
+    }
+}
+```
+
+### CircuitRace.java
+```java
+package homeworks.homework09;
+
+public class CircuitRace extends Race {
+    private int laps;
+
+    public CircuitRace() {
+        super();
+        this.laps = 0;
+    }
+
+    public CircuitRace(int length, String route, int prizePool, int laps) {
+        super(length, route, prizePool);
+        this.laps = laps;
+    }
+
+    public int getLaps() { return laps; }
+    public void setLaps(int laps) { this.laps = laps; }
+
+    @Override
+    public String toString() {
+        return "Кольцевая гонка " + super.toString() + ", Кругов: " + laps;
     }
 }
 ```
