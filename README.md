@@ -464,8 +464,8 @@ public class UsersRepositoryFileImpl implements UsersRepository {
 }
 ```
 
-## support Exceptions
 
+## support/DuplicateUserIdException.java
 ```java
 package homeworks.attestation.attestation01.support;
 
@@ -474,6 +474,7 @@ public class DuplicateUserIdException extends RuntimeException {
 }
 ```
 
+## support/UserNotFoundException.java
 ```java
 package homeworks.attestation.attestation01.support;
 
@@ -482,6 +483,8 @@ public class UserNotFoundException extends RuntimeException {
 }
 ```
 
+## support/UserFileReadWriteException.java
+
 ```java
 package homeworks.attestation.attestation01.support;
 
@@ -489,6 +492,8 @@ public class UserFileReadWriteException extends RuntimeException {
     public UserFileReadWriteException(String message, Throwable cause) { super(message, cause); }
 }
 ```
+
+## support/UserParseException.java
 
 ```java
 package homeworks.attestation.attestation01.support;
