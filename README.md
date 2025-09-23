@@ -30,8 +30,8 @@ first/dz_1/dz-one/pom.xml"
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
-[INFO] Running test.java.homeworks.attestation.attestation01.UsersRepositoryFileImplTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s -- in test.java.homeworks.attestation.attestation01.UsersRepositoryFileImplTest
+[INFO] Running attestation01.attestation.test.homeworks.UsersRepositoryFileImplTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.086 s -- in attestation01.attestation.test.homeworks.UsersRepositoryFileImplTest
 [INFO] 
 [INFO] Results:
 [INFO] 
