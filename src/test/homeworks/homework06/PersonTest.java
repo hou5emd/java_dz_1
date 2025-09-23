@@ -1,4 +1,4 @@
-package test.homeworks.homework14;
+package test.homeworks.homework06;
 
 import homeworks.homework06.Person;
 import homeworks.homework06.Product;
