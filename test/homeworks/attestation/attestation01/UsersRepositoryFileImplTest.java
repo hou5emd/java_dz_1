@@ -1,4 +1,4 @@
-package test.homeworks.attestation.attestation01;
+package homeworks.attestation.attestation01;
 
 import homeworks.attestation.attestation01.model.User;
 import homeworks.attestation.attestation01.repositories.UsersRepository;

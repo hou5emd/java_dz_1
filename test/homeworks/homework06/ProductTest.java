@@ -1,15 +1,16 @@
-package test.homeworks.homework06;
+package homeworks.homework06;
 
-import homeworks.homework06.Product;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductTest {
 
-    @Test
-    void productWithoutName() {
-        assertThrows(IllegalArgumentException.class, () -> new Product("", 1));
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void productWithoutName(String name) {
+        assertThrows(IllegalArgumentException.class, () -> new Product(name, 1));
     }
 
     @Test

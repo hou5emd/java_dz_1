@@ -1,12 +1,11 @@
-package test.homeworks.homework06;
+package homeworks.homework06;
 
-import homeworks.homework06.Person;
-import homeworks.homework06.Product;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,14 +19,16 @@ public class PersonTest {
 
     @BeforeAll
     static void setup() {
-        products = new ArrayList<>(Arrays.asList(new Product("Кофе", 100), new Product("Хлеб", 50)));
+        products =
+                new ArrayList<>(Arrays.asList(new Product("Кофе", 100), new Product("Хлеб", 50)));
 
         allProductsPrice = products.stream().map((Product::getPrice)).reduce(0.0, Double::sum);
     }
 
-    @Test
-    void withoutName() {
-        assertThrows(IllegalArgumentException.class, () -> new Person("", 10));
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void withoutName(String name) {
+        assertThrows(IllegalArgumentException.class, () -> new Person(name, 10));
     }
 
     @Test
@@ -76,7 +77,13 @@ public class PersonTest {
         Person person = new Person("Вася", 0);
         person.setName("Валера");
         assertEquals("Валера", person.getName());
-        assertThrows(IllegalArgumentException.class, () -> person.setName(""));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"", " "})
+    void setNameError(String name) {
+        Person person = new Person("Вася", 0);
+        assertThrows(IllegalArgumentException.class, () -> person.setName(name));
     }
 
     @AfterAll
