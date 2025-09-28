@@ -1,4 +1,4 @@
-package homeworks.homework06;
+package homeworks.homework014.src.test.java.ru.inno.dz14;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import homeworks.homework014.src.main.java.ru.inno.dz14.Person;
+import homeworks.homework014.src.main.java.ru.inno.dz14.Product;
 import java.util.ArrayList;
 import java.util.Arrays;
 
