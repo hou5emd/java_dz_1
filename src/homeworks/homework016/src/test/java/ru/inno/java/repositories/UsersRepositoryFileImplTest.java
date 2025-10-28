@@ -1,10 +1,10 @@
-package homeworks.attestation.attestation01;
+package ru.inno.java.repositories;
 
-import homeworks.attestation.attestation01.model.User;
-import homeworks.attestation.attestation01.repositories.UsersRepository;
-import homeworks.attestation.attestation01.repositories.UsersRepositoryFileImpl;
-import homeworks.attestation.attestation01.support.DuplicateUserIdException;
-import homeworks.attestation.attestation01.support.UserNotFoundException;
+import ru.inno.java.model.User;
+import ru.inno.java.repositories.UsersRepository;
+import ru.inno.java.repositories.UsersRepositoryFileImpl;
+import ru.inno.java.support.DuplicateUserIdException;
+import ru.inno.java.support.UserNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
@@ -25,7 +25,7 @@ public class UsersRepositoryFileImplTest {
 
     @BeforeEach
     void setup() {
-        usersFile = tempDir.resolve("src/homeworks/attestation/attestation01/users.txt");
+        usersFile = tempDir.resolve("src/main/java/ru/inno/java/users.txt");
         repo = new UsersRepositoryFileImpl(usersFile);
     }
 
