@@ -1,9 +1,7 @@
-Гонка на время Гонка: Трасса1, Длина: 4000, Призовой фонд: 20000, Участников: 1, Золотое время: 120
-Участник: BMW M3 (2018): 645 л.с., ускорение 9, подвеска 12, долговечность 90, Дополнения: [Turbo, Nitro]
+TimeLimitRace(goldTime=120)
+Участник: PerformanceCar(super=Car(brand=BMW, model=M3, year=2018, horsepower=645, acceleration=9, suspension=12, durability=90), addOns=[Turbo, Nitro])
 
-Кольцевая гонка Гонка: Трасса2, Длина: 6000, Призовой фонд: 25000, Участников: 1, Кругов: 5
-Участник: Audi RS7 (2021): 600 л.с., ускорение 8, подвеска 18, долговечность 95, Звёзды: 7
+CircuitRace(laps=5)
+Участник: ShowCar(super=Car(brand=Audi, model=RS7, year=2021, horsepower=600, acceleration=8, suspension=18, durability=95), stars=7)
 
-Гараж содержит: 2 автомобилей
-1) BMW M3 (2018): 645 л.с., ускорение 9, подвеска 12, долговечность 90, Дополнения: [Turbo, Nitro]
-2) Audi RS7 (2021): 600 л.с., ускорение 8, подвеска 18, долговечность 95, Звёзды: 7
+Garage(parkedCars=[PerformanceCar(super=Car(brand=BMW, model=M3, year=2018, horsepower=645, acceleration=9, suspension=12, durability=90), addOns=[Turbo, Nitro]), ShowCar(super=Car(brand=Audi, model=RS7, year=2021, horsepower=600, acceleration=8, suspension=18, durability=95), stars=7)])
