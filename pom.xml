@@ -11,6 +11,7 @@
         <module>src/homeworks/homework016</module>
         <module>src/homeworks/homework014</module>
         <module>src/homeworks/homework017</module>
+        <module>src/homeworks/attestation/attestation02</module>
     </modules>
 
     <properties>

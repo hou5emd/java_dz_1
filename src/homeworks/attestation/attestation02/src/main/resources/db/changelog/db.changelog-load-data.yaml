@@ -1,0 +1,30 @@
+databaseChangeLog:
+  # ===== Load Buyers =====
+  - changeSet:
+      id: 2
+      author: andrey
+      changes:
+        - loadData:
+            file: src/main/resources/db/data/buyers.csv
+            tableName: buyers
+            separator: ","
+
+  # ===== Load Products =====
+  - changeSet:
+      id: 3
+      author: andrey
+      changes:
+        - loadData:
+            file: src/main/resources/db/data/products.csv
+            tableName: products
+            separator: ","
+
+  # ===== Load Orders =====
+  - changeSet:
+      id: 4
+      author: andrey
+      changes:
+        - loadData:
+            file: src/main/resources/db/data/orders.csv
+            tableName: orders
+            separator: ","

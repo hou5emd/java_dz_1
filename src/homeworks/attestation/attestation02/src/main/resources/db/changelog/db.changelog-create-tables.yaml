@@ -1,0 +1,81 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: andrey
+      changes:
+        - createTable:
+            tableName: buyers
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: numeric(10,2)
+                  defaultValue: 0.00
+                  constraints:
+                    nullable: false
+              - column:
+                  name: count
+                  type: integer
+                  defaultValue: 0
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: buyer_id
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_orders_buyer_id
+                    references: buyers(id)
+              - column:
+                  name: product_id
+                  type: integer
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_orders_product_id
+                    references: products(id)
+              - column:
+                  name: cr_date
+                  type: timestamp
+                  defaultValueComputed: NOW()
+              - column:
+                  name: count
+                  type: integer
+                  defaultValue: 0
