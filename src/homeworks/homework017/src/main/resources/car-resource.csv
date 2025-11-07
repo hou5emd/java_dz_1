@@ -1,0 +1,5 @@
+id,brand,model,year,horsepower,acceleration,suspension,durability,type,addons,stars
+1,Toyota,Corolla,2020,120,4,15,100,Car,,
+2,Ferrari,488,2022,1005,8,12,90,PerformanceCar,Turbo; Nitro,
+3,Honda,Civic,2019,110,11,14,95,Car,,
+4,Lamborghini,Aventador,2021,750,7,18,80,ShowCar,,5
